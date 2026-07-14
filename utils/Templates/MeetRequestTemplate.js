@@ -54,10 +54,7 @@ const meetBookingTemplate = ({ user, request }) => {
                 ${request._id}
             </p>
 
-            <p>
-                <strong>Celebrity:</strong>
-                ${request.celebrity?.name || ""}
-            </p>
+           
 
             <p>
                 <strong>Date:</strong>
