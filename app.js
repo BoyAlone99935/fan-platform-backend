@@ -1,0 +1,58 @@
+const express = require('express')
+const cors = require('cors')
+const cookieParser = require("cookie-parser")
+const ErrorHandlerMiddleware = require('./middleware/errormiddleware')
+const authRoutes = require("./routes/authRoutes");
+const profileRoutes = require("./routes/Profile")
+const eventRoutes = require('./routes/EventRoutes')
+const meetAndGreetRoutes = require('./routes/MeetAndGreetRoutes')
+const RequestRoutes = require('./routes/RequestRoutes')
+const TicketRoutes = require('./routes/TicketRoutes')
+const qrCodeRoute = require('./routes/qrCodeRoute')
+const userRoute = require('./routes/userRoute')
+const BankRoutes = require('./routes/BankRoutes')
+const passport = require('passport')
+const session = require("express-session")
+require('./config/passport')
+const app = express()
+
+app.use(cors({
+  origin: "http://localhost:5173",
+  credentials: true
+}));
+
+app.use(express.json())
+app.use(cookieParser())
+app.use(
+    session({
+        secret: "fanclubsecret",
+        resave: false,
+        saveUninitialized: false
+    })
+);
+app.use(passport.initialize())
+app.use(passport.session())
+
+//Test route
+
+app.get("/" , (req , res) => {
+    res.json({message:"application is running"})
+})
+
+app.use('/api/auth' , authRoutes)
+app.use('/api/celebrities' , profileRoutes)
+app.use(
+    "/api/v1/events",
+    eventRoutes
+);
+app.use('/api/v1/meet-and-greets' , meetAndGreetRoutes)
+app.use('/api/v1/booking' , RequestRoutes)
+app.use('/api/v1/tickets' , TicketRoutes)
+app.use('/qr' , qrCodeRoute)
+app.use('/user' , userRoute)
+app.use(
+  "/api/v1/payment-methods",
+  BankRoutes
+);
+app.use(ErrorHandlerMiddleware)
+module.exports = app
