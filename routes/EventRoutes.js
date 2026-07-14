@@ -11,7 +11,7 @@ const {
     getAllEvents,
     getEvent,
     getCelebrityEvents
-} = require('../controllers/eventController')
+} = require('../controllers/eventController.js')
 
 //const auth = require('../middleware/Authenthication.js')
 

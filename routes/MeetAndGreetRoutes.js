@@ -9,7 +9,7 @@ const {
  getSingleMeetAndGreet,
  updateMeetAndGreet,
  deleteMeetAndGreet
-} = require('../controllers/meetAndGreetController')
+} = require('../controllers/meetAndGreetController.js')
 
 
 router.route("/")

@@ -1,5 +1,5 @@
 const express = require('express')
-const {createCelebrityProfile , celebrity , getAllCelebrities} = require('../controllers/profileController')
+const {createCelebrityProfile , celebrity , getAllCelebrities} = require('../controllers/profileController.js')
 const router = express.Router()
 const upload = require('../middleware/Upload.js')
 

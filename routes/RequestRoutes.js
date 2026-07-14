@@ -1,6 +1,6 @@
 const express = require('express');
 const router = express.Router();
-const auth = require('../middleware/Authenthication')
+const auth = require('../middleware/Authenthication.js')
 const {
     createOffer,
     createRequest,
@@ -11,7 +11,7 @@ const {
     updatePaymentStatus,
     getPendingPayments,
     getCompletedMeetPurchases
-} = require('../controllers/RequestController');
+} = require('../controllers/RequestController.js');
 const upload = require('../middleware/Upload.js')
 
 
