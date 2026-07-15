@@ -60,9 +60,16 @@ const register = async (req , res) => {
 }
 
 
+const login = async (req, res) => {
+    console.log("LOGIN HIT");
 
+    return res.json({
+        success: true,
+        body: req.body
+    });
+};
 
-const login = async (req , res) => {
+/*const login = async (req , res) => {
     console.log("LOGIN HIT")
    const {email , password} = req.body
 
@@ -110,7 +117,7 @@ const login = async (req , res) => {
   }
 
 
-}
+}*/
 
 
 
