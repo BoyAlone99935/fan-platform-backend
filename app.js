@@ -17,7 +17,7 @@ require('./config/passport')
 const app = express()
 
 app.use(cors({
-  origin: "https://fabulous-bonbon-c2e716.netlify.app",
+  origin: "https://exquisite-bunny-1fa17e.netlify.app",
   credentials: true
 }));
 
