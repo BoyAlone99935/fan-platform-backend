@@ -63,7 +63,10 @@ const register = async (req , res) => {
 
 
 const login = async (req , res) => {
+    console.log("LOGIN HIT")
    const {email , password} = req.body
+
+
 
    if (!email || !password) {
     throw new BadRequestError("please provide email and password")
