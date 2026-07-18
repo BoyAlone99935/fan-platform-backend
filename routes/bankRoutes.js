@@ -22,13 +22,11 @@ router.post(
 
 router.get(
     "/",
-    auth,
     getPaymentMethods
 );
 
 router.get(
     "/:id",
-    auth,
     getPaymentMethod
 );
 
