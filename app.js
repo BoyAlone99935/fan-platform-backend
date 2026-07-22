@@ -16,8 +16,12 @@ const session = require("express-session")
 require('./config/passport')
 const app = express()
 
+
 app.use(cors({
-  origin: "https://heroic-taiyaki-ad9c92.netlify.app",
+  origin: [
+    "https://heroic-taiyaki-ad9c92.netlify.app",
+    "http://localhost:5174"
+  ],
   credentials: true
 }));
 

@@ -1,7 +1,8 @@
 const express = require('express')
-const {createCelebrityProfile , celebrity , getAllCelebrities} = require('../controllers/profileController.js')
+const {createCelebrityProfile , celebrity , getAllCelebrities , getCelebrityBySlug} = require('../controllers/profileController.js')
 const router = express.Router()
 const upload = require('../middleware/Upload.js')
+
 
 
 
@@ -44,6 +45,7 @@ router.post('/create-celebrity' ,
     updateCelebrityProfile
 )*/
 
+router.get("/:slug", getCelebrityBySlug);
 
 router.get('/' , getAllCelebrities)
 

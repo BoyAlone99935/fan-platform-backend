@@ -23,7 +23,7 @@ router.route("/create-event")
         { name: "arenaOverview", maxCount: 1 },
         {name : "ticketImages" , maxCount : 20}
     ]), createEvent)
-    .get(getAllEvents);
+    
 
 router.route("/:id")
     .get(getEvent)
@@ -41,6 +41,7 @@ router.post(
 );
 
 router.get("/getEvents/:id" , getCelebrityEvents)
+
 
 router.delete(
     "/:eventId/ticket-types/:ticketTypeId",

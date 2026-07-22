@@ -112,6 +112,27 @@ const celebrity = async (req , res) => {
 }
 
 
+const getCelebrityBySlug = async (req , res) => {
+    const {slug} = req.params
+
+    if (!slug) {
+        throw new BadRequestError("no slug present in this request")
+    }
+
+    const celebrity = await Celebrity.findOne({slug})
+
+    if (!celebrity) {
+        throw new NotFoundError("celebrity not found")
+    }
+
+    res.status(StatusCodes.OK).json({
+        status : "success",
+        message : "celebrity found",
+        celebrity
+    })
+}
 
 
-module.exports = {createCelebrityProfile , getAllCelebrities , celebrity}
+
+
+module.exports = {createCelebrityProfile , getAllCelebrities , celebrity , getCelebrityBySlug}
