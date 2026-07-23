@@ -21,7 +21,7 @@ app.use(cors({
   origin: [
     "https://heroic-taiyaki-ad9c92.netlify.app",
     "http://localhost:5174",
-    "http://localhost:5713"
+    "http://localhost:5173"
   ],
   credentials: true
 }));
