@@ -20,7 +20,8 @@ const app = express()
 app.use(cors({
   origin: [
     "https://heroic-taiyaki-ad9c92.netlify.app",
-    "http://localhost:5174"
+    "http://localhost:5174",
+    "http://localhost:5713"
   ],
   credentials: true
 }));

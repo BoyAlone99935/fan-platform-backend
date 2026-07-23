@@ -45,7 +45,7 @@ router.post('/create-celebrity' ,
     updateCelebrityProfile
 )*/
 
-router.get("/:slug", getCelebrityBySlug);
+router.get("/slug/:slug", getCelebrityBySlug);
 
 router.get('/' , getAllCelebrities)
 
