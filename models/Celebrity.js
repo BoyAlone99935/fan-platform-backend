@@ -36,6 +36,11 @@ const celebritySchema = new mongoose.Schema({
         default : ""
     },
 
+    mbid: {
+        type: String,
+        default: null
+    },
+
 
     socialLinks: {
 

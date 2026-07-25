@@ -8,7 +8,8 @@ const {
  getAllMeetAndGreets,
  getSingleMeetAndGreet,
  updateMeetAndGreet,
- deleteMeetAndGreet
+ deleteMeetAndGreet,
+ getCelebMeetAndGreet
 } = require('../controllers/meetAndGreetController.js')
 
 
@@ -21,7 +22,6 @@ router.route("/")
 
 
 router.route("/:id")
-    .get(getSingleMeetAndGreet)
     .patch(
         
         upload.array("images"),
@@ -29,6 +29,7 @@ router.route("/:id")
     )
     .delete(deleteMeetAndGreet);
 
-
+router.get("/get/:id" , getSingleMeetAndGreet)
+router.get("/getAll/:id" , getCelebMeetAndGreet)
 
 module.exports = router;

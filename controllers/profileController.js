@@ -2,7 +2,8 @@ const Celebrity = require('../models/Celebrity')
 const  {StatusCodes} =  require('http-status-codes')
 const BadRequestError = require('../errors/BadRequestError')
 const NotFoundError = require('../errors/NotFoundEror')
-const createCelebrityProfile = async (req , res) => {
+const  { lookupArtistMBID } = require('../utils/MusicBrainz')
+/*const createCelebrityProfile = async (req , res) => {
     const {
         name,
         slug,
@@ -67,8 +68,79 @@ const createCelebrityProfile = async (req , res) => {
     })
 
       
-};
+};*/
 
+
+
+
+const createCelebrityProfile = async (req, res) => {
+    const {
+        name,
+        slug,
+        bio,
+        category,
+        instagram,
+        twitter,
+        youtube
+    } = req.body;
+ 
+    if (!category) {
+        throw new BadRequestError("NO CELEBRITY INSIDE REQ.BODY")
+    }
+ 
+    if (
+        !name ||
+        !slug
+    ) {
+        throw new BadRequestError(
+            "Please provide name and slug"
+        );
+    }
+ 
+    const profileImage = req.files?.profileImage?.[0].path || "";
+    const coverImage = req.files?.coverImage?.[0].path || ""
+ 
+    // best-effort lookup — does NOT block celebrity creation if it fails
+    // or finds no confident match. mbid just stays null and gets picked
+    // up later (e.g. via a manual admin edit, or a retry endpoint).
+    const mbid = await lookupArtistMBID(name);
+ 
+    const celebrity = await Celebrity.create({
+ 
+        name,
+ 
+        slug,
+ 
+        bio,
+ 
+        category,
+ 
+        profileImage,
+ 
+        coverImage,
+ 
+        mbid,
+ 
+        socialLinks: {
+ 
+            instagram,
+ 
+            twitter,
+ 
+            youtube
+ 
+        }
+ 
+    });
+ 
+ 
+    res.status(StatusCodes.CREATED).json({
+        message: "celebrity created",
+        celebrity
+    })
+ 
+ 
+};
 
 
 

@@ -13,7 +13,7 @@ const meetAndGreetSchema = new mongoose.Schema({
         required: true
     },
 
-    name: {
+    type: {
         type: String,
         enum: ["regular", "vip"],
         required: true

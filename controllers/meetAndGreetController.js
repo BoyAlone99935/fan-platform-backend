@@ -6,6 +6,9 @@ const NotFoundError = require('../errors/NotFoundEror')
 
 
 const createMeetAndGreet = async (req , res) => {
+      if (typeof req.body.location === "string") {
+        req.body.location = JSON.parse(req.body.location);
+    }
     const {
         celebrity,
         title,
@@ -70,7 +73,7 @@ const createMeetAndGreet = async (req , res) => {
 
 
 const updateMeetAndGreet = async (req, res) => {
-
+  
     const { id } = req.params;
 
     if (!id) {
@@ -87,6 +90,10 @@ const updateMeetAndGreet = async (req, res) => {
             "Meet and greet not found"
         );
     }
+
+      if (typeof req.body.location === "string") {
+    req.body.location = JSON.parse(req.body.location);
+}
 
     const {
         celebrity,
@@ -274,10 +281,48 @@ const getSingleMeetAndGreet =
 };
 
 
+const getCelebMeetAndGreet =
+    async (req, res) => {
+
+        const { id } = req.params;
+
+        if (!id) {
+            throw new BadRequestError(
+                "id not present in request"
+            );
+        }
+
+
+
+        const meetAndGreet =
+            await MeetAndGreet.find({celebrity:id})
+
+        if (!meetAndGreet) {
+            throw new NotFoundError(
+                "Meet and greet not found"
+            );
+        }
+
+        res.status(
+            StatusCodes.OK
+        ).json({
+
+            status: "success",
+
+            meetAndGreet
+
+        });
+
+};
+
+
+
+
 module.exports = {
     getAllMeetAndGreets,
     getSingleMeetAndGreet,
     deleteMeetAndGreet,
     updateMeetAndGreet,
-    createMeetAndGreet
+    createMeetAndGreet,
+    getCelebMeetAndGreet
 }
