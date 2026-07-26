@@ -3,6 +3,7 @@ const  {StatusCodes} =  require('http-status-codes')
 const BadRequestError = require('../errors/BadRequestError')
 const NotFoundError = require('../errors/NotFoundEror')
 const  { lookupArtistMBID } = require('../utils/MusicBrainz')
+const {extractYouTubeId} = require('../utils/Youtbue')
 /*const createCelebrityProfile = async (req , res) => {
     const {
         name,
@@ -207,4 +208,62 @@ const getCelebrityBySlug = async (req , res) => {
 
 
 
-module.exports = {createCelebrityProfile , getAllCelebrities , celebrity , getCelebrityBySlug}
+const addPerformanceVideo = async (req, res) => {
+    const { id } = req.params;
+    const { title, url, venue, date } = req.body;
+ 
+    if (!title || !url) {
+        throw new BadRequestError("Please provide a title and a YouTube URL");
+    }
+ 
+    const youtubeId = extractYouTubeId(url);
+ 
+    if (!youtubeId) {
+        throw new BadRequestError("Could not extract a valid YouTube video ID from that URL");
+    }
+ 
+    const celebrity = await Celebrity.findById(id);
+ 
+    if (!celebrity) {
+        throw new NotFoundError("celebrity not found");
+    }
+ 
+    celebrity.performanceVideos.push({
+        title,
+        youtubeId,
+        venue: venue || "",
+        date: date || undefined
+    });
+ 
+    await celebrity.save();
+ 
+    res.status(StatusCodes.CREATED).json({
+        status: "success",
+        performanceVideos: celebrity.performanceVideos
+    });
+};
+ 
+const removePerformanceVideo = async (req, res) => {
+    const { id, videoId } = req.params;
+ 
+    const celebrity = await Celebrity.findById(id);
+ 
+    if (!celebrity) {
+        throw new NotFoundError("celebrity not found");
+    }
+ 
+    celebrity.performanceVideos.pull(videoId);
+ 
+    await celebrity.save();
+ 
+    res.status(StatusCodes.OK).json({
+        status: "success",
+        message: "video removed",
+        performanceVideos: celebrity.performanceVideos
+    });
+};
+
+
+
+
+module.exports = {createCelebrityProfile , getAllCelebrities , celebrity , getCelebrityBySlug , addPerformanceVideo , removePerformanceVideo}

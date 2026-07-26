@@ -59,7 +59,26 @@ const celebritySchema = new mongoose.Schema({
             default: ""
         }
 
+    },
+    performanceVideos: [
+    {
+        title: {
+            type: String,
+            required: true
+        },
+        youtubeId: {
+            type: String,
+            required: true
+        },
+        venue: {
+            type: String,
+            default: ""
+        },
+        date: {
+            type: Date
+        }
     }
+]
 })
 
 
