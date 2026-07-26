@@ -19,9 +19,9 @@ const app = express()
 
 app.use(cors({
   origin: [
-    "https://heroic-taiyaki-ad9c92.netlify.app",
     "http://localhost:5174",
-    "http://localhost:5173"
+    "http://localhost:5173",
+    "https://cerulean-speculoos-35763b.netlify.app"
   ],
   credentials: true
 }));
