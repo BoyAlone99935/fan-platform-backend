@@ -275,7 +275,7 @@ const createTicket = async (req, res) => {
     }
 
     if (paymentType === "usdt") {
-        await sendTicketDetails(user , tickets , purchaseId)
+        await sendTicketDetails(foundUser , tickets , purchaseId)
     }
 
     res.status(StatusCodes.CREATED).json({
@@ -287,9 +287,6 @@ const createTicket = async (req, res) => {
     });
 };
 
-module.exports = {
-    createTicket
-};
 
 
 

@@ -2,6 +2,7 @@ const express = require('express')
 const router = express.Router()
 const passport = require('passport')
 const jwt = require('jsonwebtoken')
+const auth = require('../middleware/Authenthication')
 
 require('dotenv').config()
 const {
@@ -10,6 +11,9 @@ const {
     logout
 } = require('../controllers/authController')
 
+const {getCurrentUser} = require('../controllers/user')
+
+router.post('/user' , auth , getCurrentUser)
 
 router.post('/register' , register)
 
@@ -46,11 +50,13 @@ router.get('/google/callback' ,
         })
 
 
-        res.redirect("http://127.0.0.1:5500")
+        res.redirect("http://localhost:5173/user-frontend/")
 
     }
 
    
 )
+
+
 
 module.exports = router;
