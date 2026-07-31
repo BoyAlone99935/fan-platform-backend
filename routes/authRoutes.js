@@ -13,7 +13,7 @@ const {
 
 const {getCurrentUser} = require('../controllers/user')
 
-router.post('/user' , auth , getCurrentUser)
+router.get('/user' , auth , getCurrentUser)
 
 router.post('/register' , register)
 
