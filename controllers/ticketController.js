@@ -206,7 +206,7 @@ const createTicket = async (req, res) => {
 
                 paymentType,
 
-                paymentStatus: "paid",
+                paymentStatus: paymentType === "usdt" ? "paid" : "pending",
 
                 amount:
                     bookingType === "event"
