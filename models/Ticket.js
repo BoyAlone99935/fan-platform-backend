@@ -46,7 +46,7 @@ const ticketSchema = new mongoose.Schema({
     paymentType: {
         type: String,
         enum: [
-            "paystack",
+            "Bank",
             "usdt",
             "private"
         ],
