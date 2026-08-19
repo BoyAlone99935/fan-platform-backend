@@ -33,7 +33,7 @@ const sendTicketDetails = async (user, tickets, purchaseId) => {
             purchaseId
         });
 
-        subject = `Your Ticket for ${ticketsWithQr?.[0]?.title || "event"} is Confirmed 🎟️`;
+        subject = `Your Ticket for ${ticketsWithQr?.[0]?.title || "event"} is Confirmed `;
 
     } else if (ticketType === "meet_and_greet") {
 

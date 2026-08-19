@@ -31,8 +31,10 @@ const THEME = {
     gradientFallback: "#4338ca",
 };
 
-const FONT_STACK =
-    "'Helvetica Neue', Helvetica, Arial, sans-serif";
+
+
+
+const FONT_STACK = "Arial, Helvetica, sans-serif";
 
 // ---------------------------------------------------------------------------
 // Small helpers
@@ -107,15 +109,7 @@ const ticketCard = (ticket, index) => {
         style="margin:0 0 24px;background:${THEME.bg};border:1px solid ${THEME.border};border-radius:16px;overflow:hidden;">
 
         <!-- accent bar -->
-        <tr>
-            <td style="padding:0;">
-                <table role="presentation" width="100%" cellpadding="0" cellspacing="0" border="0">
-                    <tr>
-                        <td height="6" style="line-height:6px;font-size:0;background-color:${THEME.gradientFallback};background-image:${THEME.gradientCss};">&nbsp;</td>
-                    </tr>
-                </table>
-            </td>
-        </tr>
+       
 
         <!-- header: event title + ticket index / category -->
         <tr>
@@ -290,10 +284,10 @@ const eventTicketTemplate = ({ user, tickets = [], purchaseId }) => {
                                             </tr>
                                         </table>
                                         <p style="margin:22px 0 0;font-family:${FONT_STACK};font-size:26px;line-height:1.3;font-weight:800;color:#ffffff;">
-                                            You're going! 🎟️
+                                            You're going!
                                         </p>
                                         <p style="margin:8px 0 0;font-family:${FONT_STACK};font-size:14px;line-height:1.5;color:rgba(255,255,255,0.82);">
-                                            Hi ${greetingName}, your purchase is confirmed. Your ${ticketWord} ${tickets.length > 1 ? "are" : "is"} below — save this email or add the QR code${tickets.length > 1 ? "s" : ""} to your wallet.
+                                            Hi ${greetingName}, your purchase is confirmed. Your ${ticketWord} ${tickets.length > 1 ? "are" : "is"} below save this email or add the QR code${tickets.length > 1 ? "s" : ""} to your wallet.
                                         </p>
                                     </td>
                                 </tr>
