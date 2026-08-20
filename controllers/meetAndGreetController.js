@@ -257,10 +257,7 @@ const getSingleMeetAndGreet =
 
         const meetAndGreet =
             await MeetAndGreet.findById(id)
-                .populate(
-                    "celebrity",
-                    "name slug"
-                );
+              
 
         if (!meetAndGreet) {
             throw new NotFoundError(
