@@ -4,6 +4,7 @@ const Ticket = require("../models/Ticket");
 const Request = require("../models/MeetRequest");
 const User = require("../models/User");
 const Event = require("../models/Event");
+const MeetEvent = require('../models/MeetAndGreet')
 
 const BadRequestError = require("../errors/BadRequestError");
 const NotFoundError = require("../errors/NotFoundEror");
@@ -71,7 +72,8 @@ const createTicket = async (req, res) => {
         arrangedPayment,
         eventId,
         privateMeetId,
-        ticketId
+        ticketId,
+        meetId
     } = req.body;
 
     
@@ -127,19 +129,20 @@ const createTicket = async (req, res) => {
     }
 
     if (bookingType === "meet_and_greet") {
+        const id = meetId || privateMeetId;
 
-        if (!privateMeetId) {
+        if (!id) {
             throw new BadRequestError(
-                "privateMeetId is required"
+                "MeetId is required"
             );
         }
 
-        foundRequest =
-            await Request.findById(privateMeetId);
+        foundMeetEvent =
+            await MeetEvent.findById(id);
 
-        if (!foundRequest) {
+        if (!foundMeetEvent) {
             throw new NotFoundError(
-                "Request not found"
+                "Meet and greet not found"
             );
         }
     }
@@ -196,7 +199,7 @@ const createTicket = async (req, res) => {
                 celebrity:
                     bookingType === "event" 
                         ? foundEvent.celebrity
-                        : foundRequest.celebrity, 
+                        : foundMeetEvent.celebrity,
 
                 bookingType,
 
@@ -211,7 +214,7 @@ const createTicket = async (req, res) => {
                 amount:
                     bookingType === "event"
                         ? selectedTicket.price
-                        : foundRequest.offer.price,
+                        : foundMeetEvent.price,
 
                 paid: true,
 
@@ -220,12 +223,12 @@ const createTicket = async (req, res) => {
                 date:
                     bookingType === "event"
                         ? foundEvent.eventDate
-                        : foundRequest.offer.date,
+                        : foundMeetEvent.date,
 
                 location:
                     bookingType === "event"
                         ? foundEvent.location
-                        : foundRequest.offer.location,
+                        : foundMeetEvent.location,
 
                 status: "active",
 
