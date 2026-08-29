@@ -197,7 +197,7 @@ const createTicket = async (req, res) => {
                 email: foundUser.email,
 
                 celebrity:
-                    bookingType === "event" || bookingType === "meet_and_greet"
+                    bookingType === "event"
                         ? foundEvent.celebrity
                         : foundMeetEvent.celebrity,
 
