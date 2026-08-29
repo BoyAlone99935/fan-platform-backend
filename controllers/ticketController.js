@@ -285,7 +285,7 @@ const createTicket = async (req, res) => {
 
                 title:
                     bookingType === "event"
-                        ? foundEvent.name
+                        ? foundEvent.title
                         : foundMeetEvent.title,
 
 
