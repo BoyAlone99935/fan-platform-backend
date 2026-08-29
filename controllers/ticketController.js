@@ -447,7 +447,7 @@ const confirmPayment = async (req , res) => {
 }
 
 
-const getUncomfirmedPurchases = async (req , res) => {
+const  getUnconfirmedPurchases = async (req , res) => {
 
     const purchases = await Ticket.aggregate([
         {
