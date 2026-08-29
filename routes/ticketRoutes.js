@@ -1,7 +1,7 @@
 const express = require('express')
 const router = express.Router()
 const Auth = require('../middleware/Authenthication.js')
-const {createTicket , getAllPurchases , confirmPayment , getUserPurchases , getUncom } = require('../controllers/ticketController.js')
+const {createTicket , getAllPurchases , confirmPayment , getUserPurchases , getUnconfirmedPurchases } = require('../controllers/ticketController.js')
 
 router.post('/create-ticket' , Auth , createTicket)
 router.get("/all", Auth , getAllPurchases);
