@@ -537,10 +537,28 @@ const getAllPurchases = async (req, res) => {
 };
 
 
+const getTicketByPurchaseId = async (req, res) => {
+    const {purchaseId} = req.params
+
+    const tickets = await Ticket.find({ purchaseId });
+
+    if (!tickets || tickets.length === 0) {
+        return res.status(404).json({ message: "No tickets found for this purchaseId" });
+    }
+
+    res.status(200).json({
+        success: true,
+        count: tickets.length,
+        tickets
+    });
+};
+
+
 module.exports = {
     createTicket,
     confirmPayment,
     getAllPurchases,
     getUserPurchases,
-    getUnconfirmedPurchases
+    getUnconfirmedPurchases,
+    getTicketByPurchaseId
 };
