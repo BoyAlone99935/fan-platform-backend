@@ -16,8 +16,7 @@ passport.use(
             clientSecret:
                 process.env.CLIENT_SECRET,
 
-            callbackURL:
-                "/api/auth/google/callback"
+            callbackURL:"https://fan-platform-backend.onrender.com/api/auth/google/callback"
         },
 
         async (
