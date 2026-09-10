@@ -92,7 +92,7 @@ router.get('/google/callback',
         const redirect = req.query.state || "/";
 
         res.redirect(
-            `http://localhost:5173/user-frontend${redirect}`
+            `https://boyalone99935.github.io/user-frontend${redirect}`
         );
     }
 );
