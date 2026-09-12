@@ -9,7 +9,7 @@ const sendOfferMail = async (user) => {
 
         const response = await resend.emails.send({
 
-            from: "Headliner <onboarding@resend.dev>",
+            from: "Headliner <tickets@regentfeild.com>",
 
             to: user.email,
 
