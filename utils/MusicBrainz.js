@@ -1,4 +1,4 @@
-const USER_AGENT = "FanPlatform/1.0 (spotlight.com)";
+const USER_AGENT = "FanPlatform/1.0 (Headliner.com)";
 
 
 const lookupArtistMBID = async (name) => {

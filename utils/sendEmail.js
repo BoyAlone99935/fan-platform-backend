@@ -9,17 +9,17 @@ const sendWelcomeEmail = async (user) => {
 
         const response = await resend.emails.send({
 
-            from: "Spotlight <onboarding@resend.dev>",
+            from: "Headliner <onboarding@resend.dev>",
 
             to: user.email,
 
-            subject: "Welcome to Spotlight",
+            subject: "Welcome to Headliner",
 
             html: `
 <div style="font-family: Arial, sans-serif; line-height: 1.6; color: #333;">
 
     <h1 style="color: #111;">
-        Welcome to Spotlight 👋
+        Welcome to Headliner 👋
     </h1>
 
     <p>
@@ -27,17 +27,17 @@ const sendWelcomeEmail = async (user) => {
     </p>
 
     <p>
-        We’re excited to welcome you to <strong>Spotlight</strong> a place where fans connect with their favourite celebrities,
+        We’re excited to welcome you to <strong>Headliner</strong> a place where fans connect with their favourite celebrities,
         explore exclusive events, and stay closer to the moments that matter.
     </p>
 
     <p>
-        Think of Spotlight as your backstage pass to experiences you normally wouldn’t have access to.
+        Think of Headliner as your backstage pass to experiences you normally wouldn’t have access to.
     </p>
 
     <hr />
 
-    <h3> What you can do on Spotlight:</h3>
+    <h3> What you can do on Headliner:</h3>
 
     <ul>
         <li>Discover celebrity events</li>
@@ -55,7 +55,7 @@ const sendWelcomeEmail = async (user) => {
     </p>
 
     <p>
-         The Spotlight Team
+         The Headliner Team
     </p>
 
 </div>

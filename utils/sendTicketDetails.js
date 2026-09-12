@@ -52,7 +52,7 @@ const sendTicketDetails = async (user, tickets, purchaseId) => {
         
 
         const response = await resend.emails.send({
-            from: "Spotlight <onboarding@resend.dev>",
+            from: "Headliner <onboarding@resend.dev>",
             to: user.email,
             subject,
             html

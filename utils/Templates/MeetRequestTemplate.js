@@ -16,7 +16,7 @@ const meetBookingTemplate = ({ user, request }) => {
     <div style="background:#111827;padding:35px;text-align:center;color:#ffffff;">
 
         <h1 style="margin:0;font-size:30px;">
-            Spotlight
+            Headliner
         </h1>
 
         <p style="margin-top:10px;font-size:16px;">
@@ -175,13 +175,13 @@ const meetBookingTemplate = ({ user, request }) => {
 
         <p style="margin-top:35px;">
 
-            We appreciate your trust in Spotlight and can't wait to deliver an unforgettable experience.
+            We appreciate your trust in Headliner and can't wait to deliver an unforgettable experience.
 
         </p>
 
         <p>
 
-            Thank you for choosing <strong>Spotlight.</strong>
+            Thank you for choosing <strong>Headliner.</strong>
 
         </p>
 
@@ -191,7 +191,7 @@ const meetBookingTemplate = ({ user, request }) => {
 
     <div style="background:#111827;color:white;text-align:center;padding:18px;font-size:13px;">
 
-        © ${new Date().getFullYear()} Spotlight. All Rights Reserved.
+        © ${new Date().getFullYear()} Headliner. All Rights Reserved.
 
     </div>
 

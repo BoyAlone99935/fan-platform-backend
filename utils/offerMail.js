@@ -9,7 +9,7 @@ const sendOfferMail = async (user) => {
 
         const response = await resend.emails.send({
 
-            from: "Spotlight <onboarding@resend.dev>",
+            from: "Headliner <onboarding@resend.dev>",
 
             to: user.email,
 
@@ -43,14 +43,14 @@ const sendOfferMail = async (user) => {
     </p>
 
     <p>
-        Thank you for using Spotlight.
+        Thank you for using Headliner.
     </p>
 
     <br />
 
     <p>
         Best regards,<br />
-        Spotlight Team
+        Headliner Team
     </p>
 `
     

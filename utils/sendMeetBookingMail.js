@@ -17,7 +17,7 @@ const sendMeetBookingMail = async (user, request) => {
 
         const response = await resend.emails.send({
 
-            from: "Spotlight <onboarding@resend.dev>",
+            from: "Headliner <onboarding@resend.dev>",
 
             to: user.email,
 

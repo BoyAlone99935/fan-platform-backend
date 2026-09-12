@@ -1,6 +1,6 @@
 
 /**
- * Spotlight — Event Ticket Email
+ * Headliner — Event Ticket Email
  * -------------------------------------------------------------------------
  * Built as an EMAIL, not a webpage: table-based layout, inline styles only,
  * and a solid-color fallback behind every gradient (Outlook's Word engine
@@ -237,7 +237,7 @@ const eventTicketTemplate = ({ user, tickets = [], purchaseId }) => {
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="color-scheme" content="light" />
-    <title>Your Spotlight tickets</title>
+    <title>Your Headliner tickets</title>
     <!--[if mso]>
     <noscript>
         <xml>
@@ -254,7 +254,7 @@ const eventTicketTemplate = ({ user, tickets = [], purchaseId }) => {
 </head>
 <body style="margin:0;padding:0;background-color:${THEME.bgAlt};">
     <div style="display:none;max-height:0;overflow:hidden;opacity:0;">
-        Your Spotlight ${ticketWord} ${tickets.length > 1 ? "are" : "is"} confirmed — purchase ${purchaseId}.
+        Your Headliner ${ticketWord} ${tickets.length > 1 ? "are" : "is"} confirmed — purchase ${purchaseId}.
         &nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;
     </div>
 
@@ -273,7 +273,7 @@ const eventTicketTemplate = ({ user, tickets = [], purchaseId }) => {
                                             <tr>
                                                 <td valign="middle">
                                                     <p style="margin:0;font-family:${FONT_STACK};font-size:20px;font-weight:800;letter-spacing:0.02em;color:#ffffff;">
-                                                        Spotlight
+                                                        Headliner
                                                     </p>
                                                 </td>
                                                 <td valign="middle" align="right">
@@ -343,13 +343,13 @@ const eventTicketTemplate = ({ user, tickets = [], purchaseId }) => {
                             <table role="presentation" width="100%" cellpadding="0" cellspacing="0" border="0">
                                 <tr>
                                     <td style="font-family:${FONT_STACK};font-size:13px;font-weight:700;color:#ffffff;padding-bottom:6px;">
-                                        Spotlight
+                                        Headliner
                                     </td>
                                 </tr>
                                 <tr>
                                     <td style="font-family:${FONT_STACK};font-size:12px;line-height:1.7;color:rgba(255,255,255,0.55);">
                                         Questions about this order? Reply to this email or visit your account for support.<br/>
-                                        This ticket is non-transferable outside the Spotlight app.
+                                        This ticket is non-transferable outside the Headliner app.
                                     </td>
                                 </tr>
                             </table>
