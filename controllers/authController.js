@@ -37,16 +37,9 @@ const register = async (req , res) => {
     const token = jwt.sign(
         {userId : user._id},
         process.env.JWT_SECRET,
-        {expiresIn : "7d"}
+        {expiresIn : "90d"}
     )
 
-
-    res.cookie("token" , token , {
-        httpOnly: true,
-        secure: true,
-        sameSite: "none",
-        maxAge: 7 * 24 * 60 * 60 * 1000
-    })
 
 
     await sendWelcomeEmail(user)
@@ -55,6 +48,7 @@ const register = async (req , res) => {
         status : "success",
         message : "fan club joined succesfully",
         user,
+        token
     })
        
 }
@@ -156,25 +150,19 @@ const login = async (req, res) => {
     const token = jwt.sign(
         { userId: user._id },
         process.env.JWT_SECRET,
-        { expiresIn: "7d" }
+        { expiresIn: "90d" }
     );
     console.log("7️⃣ JWT created");
 
-    console.log("8️⃣ Setting cookie...");
-    res.cookie("token", token, {
-        httpOnly: true,
-        secure: true,
-        sameSite: "none",
-        maxAge: 7 * 24 * 60 * 60 * 1000,
-    });
-    console.log("9️⃣ Cookie set");
 
     console.log("🔟 Sending response...");
     res.status(StatusCodes.OK).json({
         status: "success",
         message: `welcome back ${user.username}`,
         user,
+        token
     });
+   
 
     console.log("✅ Login completed successfully");
 };

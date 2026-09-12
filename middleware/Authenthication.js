@@ -1,14 +1,17 @@
-const UnauthenticatedError = require('../errors/UnauthenticatedError')
-const jwt = require('jsonwebtoken')
+const UnauthenticatedError = require('../errors/UnauthenticatedError');
+const jwt = require('jsonwebtoken');
+
 const auth = async (req, res, next) => {
 
-    const token = req.cookies.token;
+    const authHeader = req.headers.authorization;
 
-    if (!token) {
+    if (!authHeader || !authHeader.startsWith('Bearer ')) {
         throw new UnauthenticatedError(
             "Authentication required"
         );
     }
+
+    const token = authHeader.split(' ')[1];
 
     const payload =
         jwt.verify(token, process.env.JWT_SECRET);
@@ -20,4 +23,4 @@ const auth = async (req, res, next) => {
     next();
 };
 
-module.exports = auth
+module.exports = auth;
