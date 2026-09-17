@@ -99,6 +99,10 @@ const eventSchema =
 
             },
 
+            time: {
+                type: String
+            },
+
             location: {
                 name: {
                     type: String,
